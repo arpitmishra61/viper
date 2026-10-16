@@ -129,7 +129,7 @@ footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color
 
 <rect class="box" x="20" y="200" width="120" height="86" rx="6"/>
 <text class="ttl" x="80" y="226" text-anchor="middle">onboarding</text>
-<text class="t2" x="80" y="244" text-anchor="middle">browser sign-in</text>
+<text class="t2" x="80" y="244" text-anchor="middle">Google sign-in</text>
 <text class="t2" x="80" y="259" text-anchor="middle">3 free queries</text>
 <text class="t2" x="80" y="274" text-anchor="middle">provider + key</text>
 <line class="ln" x1="80" y1="110" x2="80" y2="200" marker-end="url(#ah)"/>
@@ -217,7 +217,7 @@ footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color
     <div class="card"><h3>GitHub built in</h3><p>Ten tools to read repos, list and comment on issues, open pull requests, update files and clone.</p></div>
     <div class="card"><h3>Multi-agent mode</h3><p>An orchestrator plans subtasks, runs up to four workers in parallel with retries, and merges their answers. Trigger it with <code>/multi</code>, or let the model call <code>spawn_agents</code>.</p></div>
     <div class="card"><h3>Visible thinking</h3><p>A think tool lets the model reason before acting. Toggle the display with <code>/think</code>.</p></div>
-    <div class="card"><h3>Browser sign-in</h3><p>Sign up or sign in with email and password on a single static page (<code>auth.html</code>, served at <code>/auth</code>). The terminal receives the session on a one-shot localhost server and checks it with Supabase. Keys and session stay on your machine, encrypted.</p></div>
+    <div class="card"><h3>Sign in with Google</h3><p>One click on a hosted page. The terminal receives the session on a one-shot localhost server and checks it with Supabase. Keys and session stay on your machine, encrypted.</p></div>
     <div class="card"><h3>Free tier</h3><p>Try 3 queries without signing in. Signed-in users get 3 free sandbox sessions on a shared E2B key, then add their own with <code>/e2b</code>.</p></div>
     <div class="card"><h3>Slash commands</h3><p><code>/clear /model /tools /save /cwd /tokens /think /multi /pii /e2b /help</code></p></div>
   </div>
@@ -262,23 +262,22 @@ footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color
   <p class="sub">Requires Python 3.11 or newer. Installing adds a <code>viper</code> command to your terminal.</p>
   <div class="steps">
     <div class="step"><h3><span>1</span>Run the one-line installer</h3>
-      <p class="sub" style="margin-bottom:.6rem">The script checks for Python 3.11+, installs <code>viper-agent[all]</code> (PyPI first, GitHub source as fallback) and downloads Chromium for the browser tool. It installs into the Python you run it with, so activate a virtual environment first if you want isolation. You can read the script before running it: <a href="https://raw.githubusercontent.com/arpitmishra61/viper/main/install.sh">install.sh</a>, <a href="https://raw.githubusercontent.com/arpitmishra61/viper/main/install.ps1">install.ps1</a>.</p>
+      <p class="sub" style="margin-bottom:.6rem">The script checks for Python 3.11+, installs <code>viper-agent[all]</code> (PyPI first, GitHub source as fallback) and downloads Chromium for the browser tool. It installs into the Python you run it with, so activate a virtual environment first if you want isolation. You can read the script before running it: <a href="https://raw.githubusercontent.com/arpitmishra61/Viper-Agent/master/install.sh">install.sh</a>, <a href="https://raw.githubusercontent.com/arpitmishra61/Viper-Agent/master/install.ps1">install.ps1</a>.</p>
       <div class="cmds">
-        <div class="copy term"><div class="bar">Windows PowerShell</div><button type="button">copy</button><pre>iwr -useb https://raw.githubusercontent.com/arpitmishra61/viper/main/install.ps1 | iex</pre></div>
-        <div class="copy term"><div class="bar">macOS / Linux</div><button type="button">copy</button><pre>curl -fsSL https://raw.githubusercontent.com/arpitmishra61/viper/main/install.sh | bash</pre></div>
+        <div class="copy term"><div class="bar">Windows PowerShell</div><button type="button">copy</button><pre>iwr -useb https://raw.githubusercontent.com/arpitmishra61/Viper-Agent/master/install.ps1 | iex</pre></div>
+        <div class="copy term"><div class="bar">macOS / Linux</div><button type="button">copy</button><pre>curl -fsSL https://raw.githubusercontent.com/arpitmishra61/Viper-Agent/master/install.sh | bash</pre></div>
       </div></div>
     <div class="step"><h3><span>2</span>First run: sign in and add your key</h3>
-      <p class="sub" style="margin-bottom:.6rem">Run <code>viper</code>. Choose <b>Sign up</b> or <b>Sign in</b>. Your browser opens a short form, and the terminal continues as soon as you finish. Or pick <b>Continue free</b> for 3 queries. Then pick a provider with the arrow keys and paste your own API key. Viper checks the key before saving it. Next time it shows <code>logged in as you@example.com</code> and the same provider menu.</p>
+      <p class="sub" style="margin-bottom:.6rem">Run <code>viper</code>. Choose <b>Sign in with Google</b>. Your browser opens, you pick an account, and the terminal continues as soon as you are back. Or pick <b>Continue free</b> for 3 queries. Then pick a provider with the arrow keys and paste your own API key. Viper checks the key before saving it. Next time it shows <code>logged in as you@gmail.com</code> and the same provider menu.</p>
       <div class="copy term"><div class="bar">first run</div><button type="button">copy</button><pre>$ viper
 ? You are not signed in.
- &raquo; Sign up
-   Sign in
+ &raquo; Sign in with Google
    Continue free (3 of 3 queries left)
    Quit
-  opening your browser to finish signing in...
+  opening your browser to sign in with Google...
   waiting for you to finish (5 minutes, ctrl+c to cancel)...
 
-  Authenticated as you@example.com
+  Authenticated as you@gmail.com
 
 ? Which provider do you want to use?
    ollama       Local Ollama instance (no API key needed)
@@ -289,7 +288,7 @@ footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color
       <p class="sub" style="margin:.8rem 0 0">Prefer no prompts? Set <code>OPENROUTER_API_KEY</code> (or pass <code>--api-key</code>) and Viper uses it directly.</p></div>
     <div class="step"><h3><span>3</span>Commands</h3>
       <div class="copy term"><div class="bar">examples</div><button type="button">copy</button><pre>viper                  # start, or resume your login
-viper login           # sign up or sign in (says "already logged in" if you are)
+viper login           # sign in with Google (says "already logged in" if you are)
 viper logout          # sign out and remove saved keys
 viper --provider ollama --model llama3.2
 viper --cwd /path/to/project --resume
